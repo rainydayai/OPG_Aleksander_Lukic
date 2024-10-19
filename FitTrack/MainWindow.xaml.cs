@@ -20,5 +20,32 @@ namespace FitTrack
         {
             InitializeComponent();
         }
+        private void SignIn_Click(object sender, RoutedEventArgs e)
+        {
+            string username = UsernameTextBox.Text;
+            string password = PasswordBox.Password;
+
+            if (username == "admin" && password == "password")
+            {
+                WorkoutfitsWindow workoutfitsWindow = new WorkoutfitsWindow
+                WorkoutfitsWindow.show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Fel användarnamn eller lösenord. Försök igen.", "Fel", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+        }
+
+        private void Register_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterWindow registerwindow = new RegisterWindow();
+            registerwindow.Show();
+            this.Close();
+
+        }
+
     }
+
 }
