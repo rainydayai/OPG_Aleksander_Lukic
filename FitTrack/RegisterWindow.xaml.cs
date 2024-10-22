@@ -23,5 +23,42 @@ namespace FitTrack
         {
             InitializeComponent();
         }
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            string username = UsernameTextBox.Text;
+            string password = PasswordBox.Password;
+            string ConfirmPassword = ConfirmPasswordBox.Password;
+            string country = CountryTextBox.Text;
+
+            if (password == ConfirmPassword)
+
+            {
+
+                MessageBox.Show("Användare registrerad!");
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
+
+            }
+
+            else
+
+            {
+
+                MessageBox.Show("Lösenroden matchar inte!");
+
+            }
+
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+
+        {
+
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+
+        }
     }
 }
