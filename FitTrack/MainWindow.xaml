@@ -7,15 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="LightGray">
+        <StackPanel>
         <Label Content="FitTrack" FontSize="30" FontFamily="Arial" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" Foreground="Crimson" />
-        <TextBox x:Name="UsernameTextBox" Width="200" Height="30" Margin="0,0,100,0" HorizontalAlignment="Center" VerticalAlignment="Top" TextChanged="UsernameTextBox_TextChanged" />
-        <TextBlock x:Name="UsernamePlaceholder" Text="Username" Foreground="Gray" FontStyle="Italic" Width="200" Height="30" Margin="0,0,100,0" HorizontalAlignment="Center" VerticalAlignment="Top" IsHitTestVisible="False" />
-        <PasswordBox x:Name="PasswordBox" Width="200" Height="30" Margin="0,140,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" PasswordChanged="PasswordBox_PasswordChanged" />
-        <TextBlock x:Name="PasswordPlaceholder" Text="Password" Foreground="Gray" FontStyle="Italic" Width="200" Height="30" Margin="0,0,100,0" HorizontalAlignment="Center" VerticalAlignment="Top" IsHitTestVisible="False" />
-        <Button Content="Sign In" Width="100" Height="30" Margin="0,180,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Click="SignIn_Click" />
-        <Button Content="Register" Width="100" Height="30" Margin="0,220,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Register_Click" />
+        <TextBox x:Name="UsernameTextBox" Width="200" Height="30"  HorizontalAlignment="Center" VerticalAlignment="Top" TextChanged="UsernameTextBox_TextChanged" />
+        <TextBlock x:Name="UsernamePlaceholder" Text="Username" Foreground="Gray" FontStyle="Italic" Width="200" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" IsHitTestVisible="False" />
+        <PasswordBox x:Name="PasswordBox" Width="200" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" PasswordChanged="PasswordBox_PasswordChanged" Password="" />
+        <TextBlock x:Name="PasswordPlaceholder" Foreground="Gray" FontStyle="Italic" Width="200" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" IsHitTestVisible="False" ><Run Text="Passwor"/><Run Language="sv-se" Text="d"/></TextBlock>
+        <Button Content="Sign In" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Click="SignIn_Click" />
+        <Button Content="Register" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Register_Click" />
 
-
+        </StackPanel>
 
     </Grid>
 </Window>

@@ -27,8 +27,8 @@ namespace FitTrack
 
             if (username == "admin" && password == "password")
             {
-                WorkoutfitsWindow workoutfitsWindow = new WorkoutfitsWindow
-                WorkoutfitsWindow.show();
+                WorkoutsWindow workoutsWindow = new WorkoutsWindow();
+                workoutsWindow.Show();
                 this.Close();
             }
             else
