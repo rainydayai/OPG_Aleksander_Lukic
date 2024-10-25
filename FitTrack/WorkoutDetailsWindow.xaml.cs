@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FitTrack.Classes.BaseClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,7 +37,7 @@ namespace FitTrack
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             // Uppdatera träningspasset med nya värden
-            workout.Duration = int.Parse(DurationTextBox.Text);
+            workout.Duration = TimeSpan.FromMinutes(int.Parse(DurationTextBox.Text));
             workout.CaloriesBurned = int.Parse(CaloriesBurnedTextBox.Text);
             workout.Notes = NotesTextBox.Text;
 

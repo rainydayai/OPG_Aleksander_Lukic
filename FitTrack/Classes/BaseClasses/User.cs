@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FitTrack.Classes.BaseClasses
 {
-    public class User : Person 
+    public class User : Person
     {
         public string Country { get; set; }
         public string SecurityQuestion { get; set; }
@@ -39,6 +39,6 @@ namespace FitTrack.Classes.BaseClasses
 
     }
 
-
+}
 
 

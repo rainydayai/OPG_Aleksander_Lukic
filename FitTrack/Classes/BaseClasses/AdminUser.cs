@@ -17,3 +17,5 @@ namespace FitTrack.Classes.BaseClasses
             }
         }
     }
+
+}

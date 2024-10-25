@@ -7,11 +7,13 @@
         mc:Ignorable="d"
         Title="RegisterWindow" Height="450" Width="800">
     <Grid Background="LightGray">
-        <TextBox x:Name="UsernameTextBox" Width="200" Height="30" Margin="0,20,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" TextChanged="Användarnam" />
-        <PasswordBox x:Name="PasswordBox" Width="200" Height="30" Margin="0,60,0,0" HorizontalAlignment="Center" VerticalContentAlignment="Top" DataContextChanged="Lösenord"/>
-        <PasswordBox x:Name="ConfirmPasswordBox" Width="200" Height="30" Margin="0,100,0,0" HorizontalAlignment="Center" VerticalContentAlignment="Top" DataContextChanged="Bekräfta lösenord" />
-        <TextBox x:Name="CountryTextBox" Width="200" Height="30" Margin="0,140,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" TextChanged="Land" />
-        <Button Content="Registrera" Width="100" Height="30" Margin="0,200,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Click="RegisterButton_Click" />
-        <Button Content="Avbryt" Width="100" Height="30" Margin="0,240,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Click="CancelButton_Click" />
+        <StackPanel>
+            <TextBox x:Name="UsernameTextBox" Width="200" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Användarnamn" />
+        <PasswordBox x:Name="PasswordBox" Width="200" Height="30"  HorizontalAlignment="Center" VerticalContentAlignment="Top" Password="Lösenord"/>
+        <PasswordBox x:Name="ConfirmPasswordBox" Width="200" Height="30"  HorizontalAlignment="Center" VerticalContentAlignment="Top" Password="Bekräfta lösenord" />
+        <TextBox x:Name="CountryTextBox" Width="200" Height="30"  HorizontalAlignment="Center" VerticalAlignment="Top" Text="Land" />
+        <Button Content="Registrera" Width="100" Height="30"  HorizontalAlignment="Center" VerticalAlignment="Top" Click="RegisterButton_Click" />
+        <Button Content="Avbryt" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Click="CancelButton_Click" />
+        </StackPanel>
     </Grid>
 </Window>

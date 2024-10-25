@@ -11,9 +11,9 @@
                <ComboBoxItem Content="Konditionsträning"/>
                <ComboBoxItem Content="Styrketräning"/>
         </ComboBox>
-                <TextBox x:Name="DurationTextBox" Width="200" Height="30" Margin="0,60,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" PlaceholderText="Varaktighet (minuter)"/>
-                <TextBox x:Name="CaloriesBurnedTextBox" Width="200" Height="30" Margin="0,100,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" PlaceholderText="Kalorier Förbrända"/>
-                <TextBox x:Name="NotesTextBox" Width="200" Height="60" Margin="0,140,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" PlaceholderText="Anteckningar"/>
+                <TextBox x:Name="DurationTextBox" Width="200" Height="30" Margin="0,60,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Varaktighet (minuter)"/>
+                <TextBox x:Name="CaloriesBurnedTextBox" Width="200" Height="30" Margin="0,100,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Kalorier Förbrända"/>
+                <TextBox x:Name="NotesTextBox" Width="200" Height="60" Margin="0,140,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Anteckningar"/>
                 <Button Content="Spara" Width="100" Height="30" Margin="0,220,100,0" HorizontalAlignment="Right" VerticalAlignment="Top" Click="SaveWorkoutButton_Click"/>
                 <Button Content="Avbryt" Width="100" Height="30" Margin="100,220,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="CancelButton_Click"/> 
 
