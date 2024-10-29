@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FitTrack.Classes.BaseClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,11 @@ namespace FitTrack
     /// </summary>
     public partial class RegisterWindow : Window
     {
-        public RegisterWindow()
+        UserManagement manager;
+        public RegisterWindow(UserManagement manager)
         {
             InitializeComponent();
+            this.manager = manager;
         }
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
@@ -35,7 +38,7 @@ namespace FitTrack
             {
 
                 MessageBox.Show("Användare registrerad!");
-                MainWindow mainWindow = new MainWindow();
+                MainWindow mainWindow = new MainWindow(manager);
                 mainWindow.Show();
                 this.Close();
 
@@ -55,7 +58,7 @@ namespace FitTrack
 
         {
 
-            MainWindow mainWindow = new MainWindow();
+            MainWindow mainWindow = new MainWindow(manager);
             mainWindow.Show();
             this.Close();
 

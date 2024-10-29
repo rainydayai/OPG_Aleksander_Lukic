@@ -36,47 +36,62 @@ namespace FitTrack.Classes.BaseClasses;
 //    }
 //}
 
-public partial class WorkoutsWindow : Window
+//public partial class WorkoutsWindow : Window
+//{
+//    public User CurrentUser { get; private set; }
+//    public List<Workout> WorkoutList { get; private set; }
+
+//    public WorkoutsWindow()
+//    {
+//        InitializeComponent();
+//    }
+
+//    public WorkoutsWindow(User user) : this() // Anropar parameterlös konstruktor
+//    {
+//        CurrentUser = user;
+//        WorkoutList = new List<Workout>(); // Initierar listan av träningspass
+//        UpdateWorkoutList();
+//    }
+
+//    // Uppdaterar visningen av träningslistan (t.ex. i en ListView eller liknande)
+//    private void UpdateWorkoutList()
+//    {
+//        WorkoutsListView.ItemsSource = null;  // Rensa befintliga objekt
+//        WorkoutsListView.ItemsSource = WorkoutList;  // Sätt om datakällan
+//    }
+
+//    // Öppna fönstret för att lägga till ett nytt träningspass
+//    private void AddWorkout_Click(object sender, RoutedEventArgs e)
+//    {
+//        var addWorkoutWindow = new AddWorkoutsWindow(); // Skapar nytt AddWorkoutWindow
+//        addWorkoutWindow.Owner = this;
+
+//        if (addWorkoutWindow.ShowDialog() == true) // Om användaren sparar träningspasset
+//        {
+//            if (addWorkoutWindow.NewWorkout != null) // Kontrollera om ett träningspass skapades
+//            {
+//                WorkoutList.Add(addWorkoutWindow.NewWorkout); // Lägg till träningspasset i listan
+//                UpdateWorkoutList();  // Uppdatera listan efter att träningspasset lagts till
+//            }
+//            else
+//            {
+//                MessageBox.Show("Inget träningspass lades till.");
+//            }
+//        }
+//    }
+//}
+
+public class Workout
 {
-    public User CurrentUser { get; private set; }
-    public List<Workout> WorkoutList { get; private set; }
+    public DateTime Date { get; set; }
+    public string Type { get; set; }
+    public TimeSpan Duration { get; set; }
+    public int CaloriesBurned { get; set; }
+    public string Notes { get; set; }
 
-    public WorkoutsWindow()
+    public virtual int CalculateCaloriesBurned()
     {
-        InitializeComponent();
-    }
-
-    public WorkoutsWindow(User user) : this() // Anropar parameterlös konstruktor
-    {
-        CurrentUser = user;
-        WorkoutList = new List<Workout>(); // Initierar listan av träningspass
-        UpdateWorkoutList();
-    }
-
-    // Uppdaterar visningen av träningslistan (t.ex. i en ListView eller liknande)
-    private void UpdateWorkoutList()
-    {
-        WorkoutsListView.ItemsSource = null;  // Rensa befintliga objekt
-        WorkoutsListView.ItemsSource = WorkoutList;  // Sätt om datakällan
-    }
-
-    // Öppna fönstret för att lägga till ett nytt träningspass
-    private void AddWorkout_Click(object sender, RoutedEventArgs e)
-    {
-        var addWorkoutWindow = new AddWorkoutsWindow(); // Skapar nytt AddWorkoutWindow
-        addWorkoutWindow.Owner = this;
-
-        if (addWorkoutWindow.ShowDialog() == true) // Om användaren sparar träningspasset
-        {
-            if (addWorkoutWindow.NewWorkout != null) // Kontrollera om ett träningspass skapades
-            {
-                WorkoutList.Add(addWorkoutWindow.NewWorkout); // Lägg till träningspasset i listan
-                UpdateWorkoutList();  // Uppdatera listan efter att träningspasset lagts till
-            }
-            else
-            {
-                MessageBox.Show("Inget träningspass lades till.");
-            }
-        }
+        // Formel på hur mycket kalorier som bränts
+        return (int)(Duration.TotalMinutes * 5); // Exempel formula
     }
 }

@@ -12,9 +12,9 @@ namespace FitTrack.Classes.GUIClasses
         public User User { get; set; }
         public List<Workout> WorkoutList { get; set; }
 
-        public WorkoutsWindowClass() 
+        public WorkoutsWindowClass()
         {
-            WorkoutList = new List<Workout>();        
+            WorkoutList = new List<Workout>();
         }
         public void AddWorkout(Workout workout)
         {

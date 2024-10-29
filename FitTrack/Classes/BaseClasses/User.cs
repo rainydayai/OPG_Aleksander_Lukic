@@ -11,9 +11,9 @@ namespace FitTrack.Classes.BaseClasses
     public class User : Person
     {
         public string Country { get; set; }
-        public string SecurityQuestion { get; set; }
+        //public string SecurityQuestion { get; set; }
 
-        public string SecurityAnswer { get; set; }
+        //public string SecurityAnswer { get; set; }
 
         public override void SignIn()
         {
@@ -23,17 +23,17 @@ namespace FitTrack.Classes.BaseClasses
         public void ResetPassword(string securityAnswer)
 
         {
-            if (securityAnswer == SecurityAnswer)
+            //if (securityAnswer == SecurityAnswer)
 
-            {
-                Console.WriteLine("Password reset successful.");
+            //{
+            //    Console.WriteLine("Password reset successful.");
 
 
-            }
-            else
-            {
-                Console.WriteLine("Incorecct security answer.");
-            }
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Incorecct security answer.");
+            //}
 
         }
 

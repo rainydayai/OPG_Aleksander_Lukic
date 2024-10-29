@@ -7,8 +7,10 @@
         mc:Ignorable="d"
         Title="WorkoutsWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Lägg till Träningspass" Width="150" Height="30" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="AddWorkoutButton_Click"/>
-        <Button Content="Ta bort Träningspass" Width="150" Height="30" Margin="170,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="RemoveWorkoutButton_Click"/>
+        <StackPanel> 
+        <Button Content="Lägg till Träningspass" Width="150" Height="30" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="AddWorkout_Click"/>
+        <Button Content="Ta bort Träningspass" Width="150" Height="30" Margin="170,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="AddWorkout_Click"/>
         <ListBox x:Name="WorkoutListBox" Margin="10,50,10,10"/>
+        </StackPanel>
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FitTrack.Classes.BaseClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +20,15 @@ namespace FitTrack
     /// </summary>
     public partial class StartWindow : Window
     {
-        public StartWindow()
+        UserManagement manager;
+        public StartWindow(UserManagement manager)
         {
             InitializeComponent();
         }
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow loginWindow = new MainWindow();
+            MainWindow loginWindow = new MainWindow(manager);
             loginWindow.Show();
 
             this.Close();

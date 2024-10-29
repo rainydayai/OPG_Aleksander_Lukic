@@ -122,6 +122,10 @@ namespace FitTrack
             }
         }
 
+        public static implicit operator WorkoutsWindow(WorkoutDetailsWindow v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
