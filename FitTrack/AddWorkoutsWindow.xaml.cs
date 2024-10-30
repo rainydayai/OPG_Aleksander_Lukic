@@ -71,12 +71,17 @@ namespace FitTrack
 
     public partial class AddWorkoutsWindow : Window
     {
-        public AddWorkoutsWindow()
+        public UserManagement manager;
+
+        public User currentUser ;
+        public AddWorkoutsWindow(User user, UserManagement manager)
         {
             InitializeComponent();
+            currentUser = user;
+            this.manager = manager;
         }
 
-        public Workout NewWorkout { get; private set; } // Nya träningspasset som användaren skapar
+        public Workout NewWorkout { get; set; } // Nya träningspasset som användaren skapar
 
         // Hanterar "Spara"-knappen
         private void SaveWorkout_Click(object sender, RoutedEventArgs e)
@@ -101,15 +106,18 @@ namespace FitTrack
             try
             {
                 // Skapa ett nytt Workout-objekt
-                NewWorkout = new Workout
+                NewWorkout = new CardioWorkout
                 {
                     Type = WorkoutTypeComboBox.Text,
-                    Duration = TimeSpan.FromMinutes(duration),
+                    //Duration = TimeSpan.FromMinutes(duration),
                     CaloriesBurned = caloriesBurned,
                     Notes = NotesTextBox.Text,
-                    Date = DateTime.Now // Använd nuvarande datum för träningspasset
+                  /*  Date = DateTime.Now */// Använd nuvarande datum för träningspasset
                 };
 
+                var workoutWindow = new WorkoutsWindow(manager);
+                workoutWindow.Show();
+                MessageBox.Show("En ny workout har skapats");
                 DialogResult = true; // Signalerar att träningen sparades korrekt
                 Close(); // Stänger fönstret
             }
@@ -117,6 +125,13 @@ namespace FitTrack
             {
                 MessageBox.Show($"Ett fel inträffade: {ex.Message}");
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            WorkoutsWindow window = new WorkoutsWindow(manager);
+            window.Show();
+            this.Close();
         }
     }
 

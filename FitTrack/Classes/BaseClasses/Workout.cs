@@ -81,17 +81,17 @@ namespace FitTrack.Classes.BaseClasses;
 //    }
 //}
 
-public class Workout
+public abstract class Workout
 {
-    public DateTime Date { get; set; }
+    public int Date { get; set; }
     public string Type { get; set; }
-    public TimeSpan Duration { get; set; }
+    public int Duration { get; set; }
     public int CaloriesBurned { get; set; }
     public string Notes { get; set; }
 
     public virtual int CalculateCaloriesBurned()
     {
         // Formel på hur mycket kalorier som bränts
-        return (int)(Duration.TotalMinutes * 5); // Exempel formula
+        return (Duration * 5); // Exempel formula
     }
 }

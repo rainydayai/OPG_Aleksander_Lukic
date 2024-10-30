@@ -26,17 +26,39 @@ namespace FitTrack
             this.manager = manager;
 
         }
+
+        private void OpenWorkoutsWindow()
+        {
+            WorkoutsWindow workoutsWindow = new WorkoutsWindow(manager);
+            workoutsWindow.Show();
+        }
+        private void OpenButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenWorkoutsWindow();
+        }
+
+        private void CloseAllWorkoutWindows()
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window is WorkoutsWindow)
+                {
+                    window.Close();
+                }
+            }
+        }
+
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
             string username = UsernameTextBox.Text;
             string password = PasswordBox.Password;
 
-            var user = UserManagement.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
+            var user = manager.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
 
             if (user != null)
             {
                 MessageBox.Show("Inloggning lyckades!", "Inloggning", MessageBoxButton.OK, MessageBoxImage.Information);
-                WorkoutsWindow workoutsWindow = new WorkoutsWindow();
+                WorkoutsWindow workoutsWindow = new WorkoutsWindow(manager);
                 workoutsWindow.Show();
                 this.Close();
             }

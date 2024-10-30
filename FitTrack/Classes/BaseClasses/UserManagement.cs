@@ -8,21 +8,29 @@ namespace FitTrack.Classes.BaseClasses
 {
     public class UserManagement
     {
+        public User CurrentUser { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public string Country { get; set; }
         public List<Workout> Workouts { get; set; } = new List<Workout>();
 
-        public static List<User> Users { get; set; }
+        
+        public List<User> Users { get; set; }
 
         public UserManagement()
         {
-            Users = new List<User>() { new User {Username = "Alex", Password = "123", Country = "Sverige", } };
+            User user = new User { Username = "Alex", Password = "123", Country = "Sverige" };
+            user.Workouts.Add(new CardioWorkout { Duration = 20, Type = "CardioWorkout" , Date = 123   , CaloriesBurned = 123 , Notes = "blabla"  });
+            Users = new List<User>();
+            Users.Add(user);
+            
         }
         public bool SignIn(string username, string password)
         {
             return username == Username && password == Password;
         }
+
+       
 
         public void AddWorkout(Workout workout)
         {

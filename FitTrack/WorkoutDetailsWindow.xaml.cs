@@ -37,7 +37,8 @@ namespace FitTrack
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             // Uppdatera träningspasset med nya värden
-            workout.Duration = TimeSpan.FromMinutes(int.Parse(DurationTextBox.Text));
+            workout.Duration = int.Parse(DurationTextBox.Text);
+            //workout.Duration = TimeSpan.FromMinutes(int.Parse(DurationTextBox.Text));
             workout.CaloriesBurned = int.Parse(CaloriesBurnedTextBox.Text);
             workout.Notes = NotesTextBox.Text;
 

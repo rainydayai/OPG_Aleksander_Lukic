@@ -10,6 +10,14 @@ namespace FitTrack.Classes.BaseClasses
 {
     public class User : Person
     {
+        public string Name { get; set; }
+        public List<Workout> Workouts { get; set; }
+
+        public User() 
+        {
+            Workouts = new List<Workout>(); //Representerar listan 
+        
+        }
         public string Country { get; set; }
         //public string SecurityQuestion { get; set; }
 

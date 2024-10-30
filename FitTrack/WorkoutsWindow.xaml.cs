@@ -1,6 +1,7 @@
 ﻿using FitTrack.Classes.BaseClasses;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -80,19 +81,30 @@ namespace FitTrack
 
     public partial class WorkoutsWindow : Window
     {
-        public User CurrentUser { get; private set; }
-        public List<Workout> WorkoutList { get; private set; }
+        private UserManagement manager;
 
-        public WorkoutsWindow()
+        public User CurrentUser { get; private set; }
+        public ObservableCollection<Workout> WorkoutList { get; set; }
+
+        public Workout workout { get; set; }
+
+
+
+        //public WorkoutsWindow()
+        //{
+        //    InitializeComponent();
+        //}
+
+        public WorkoutsWindow(UserManagement manager)  // Anropar parameterlös konstruktor
         {
             InitializeComponent();
-        }
+            this.manager = manager;
+            //CurrentUser = user; Lägg currentuser som property(egenskap) i manager klassen 
 
-        public WorkoutsWindow(User user) : this() // Anropar parameterlös konstruktor
-        {
-            CurrentUser = user;
-            WorkoutList = new List<Workout>(); // Initierar listan av träningspass
-            UpdateWorkoutList();
+
+            WorkoutList = new ObservableCollection<Workout>(); // Initierar listan av träningspass
+
+            //UpdateWorkoutList();
         }
 
         // Uppdaterar visningen av träningslistan (t.ex. i en ListView eller liknande)
@@ -102,18 +114,26 @@ namespace FitTrack
             //WorkoutsListView.ItemsSource = WorkoutList;  // Sätt om datakällan
         }
 
-        // Öppna fönstret för att lägga till ett nytt träningspass
-        private void AddWorkout_Click(object sender, RoutedEventArgs e)
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            var addWorkoutWindow = new AddWorkoutsWindow(); // Skapar nytt AddWorkoutWindow
-            addWorkoutWindow.Owner = this;
+            this.Close();
+        }
+
+    // Öppna fönstret för att lägga till ett nytt träningspass
+    private void AddWorkout_Click(object sender, RoutedEventArgs e)
+        {
+            var addWorkoutWindow = new AddWorkoutsWindow(CurrentUser, manager); // Skapar nytt AddWorkoutWindow
+                                                                                //addWorkoutWindow.Owner = this;'
+            this.Close();
 
             if (addWorkoutWindow.ShowDialog() == true) // Om användaren sparar träningspasset
             {
+               
                 if (addWorkoutWindow.NewWorkout != null) // Kontrollera om ett träningspass skapades
                 {
-                    WorkoutList.Add(addWorkoutWindow.NewWorkout); // Lägg till träningspasset i listan
-                    UpdateWorkoutList();  // Uppdatera listan efter att träningspasset lagts till
+                    WorkoutList.Add(addWorkoutWindow.NewWorkout);
+                    // WorkoutList.Add(addWorkoutWindow.NewWorkout); // Lägg till träningspasset i listan
+                    // UpdateWorkoutList();  // Uppdatera listan efter att träningspasset lagts till
                 }
                 else
                 {
@@ -121,6 +141,7 @@ namespace FitTrack
                 }
             }
         }
+
 
         public static implicit operator WorkoutsWindow(WorkoutDetailsWindow v)
         {
