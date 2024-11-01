@@ -88,6 +88,8 @@ namespace FitTrack
 
         public Workout workout { get; set; }
 
+        public List<Workout> workoutList { get; set; } = new List<Workout>();
+
 
 
         //public WorkoutsWindow()
@@ -123,7 +125,7 @@ namespace FitTrack
     private void AddWorkout_Click(object sender, RoutedEventArgs e)
         {
             var addWorkoutWindow = new AddWorkoutsWindow(CurrentUser, manager); // Skapar nytt AddWorkoutWindow
-                                                                                //addWorkoutWindow.Owner = this;'
+                                                                                //addWorkoutWindow.Owner = this;
             this.Close();
 
             if (addWorkoutWindow.ShowDialog() == true) // Om användaren sparar träningspasset
@@ -143,6 +145,16 @@ namespace FitTrack
         }
 
 
+
+        public void AddWorkoutToList(Workout workout)
+        {
+            workoutList.Add(workout);
+            WorkoutListBox.ItemsSource = null;  // För att uppdatera listan, rensa och sätt den igen
+            WorkoutListBox.ItemsSource = workoutList;
+        }
+
+
+
         public static implicit operator WorkoutsWindow(WorkoutDetailsWindow v)
         {
             throw new NotImplementedException();
@@ -150,5 +162,3 @@ namespace FitTrack
     }
 
 }
-
-

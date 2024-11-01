@@ -8,9 +8,11 @@
         Title="WorkoutsWindow" Height="450" Width="800">
     <Grid Background="LightGray">
         <StackPanel>
-            <Button Content="Lägg till Träningspass" Width="150" Height="30" Margin="10,10,0,10" HorizontalAlignment="Center" VerticalAlignment="Top" Click="AddWorkout_Click"/>
-        <Button Content="Ta bort Träningspass" Width="150" Height="30" Margin="170,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Click="AddWorkout_Click"/>
-        <ListBox x:Name="WorkoutListBox" Height="150" Margin="10,50,10,10"/> 
+            <Button Content="Lägg till Träningspass" Width="150" Height="30" Margin="100,10,100,0" HorizontalAlignment="Center" VerticalAlignment="Top" Click="AddWorkout_Click"/>
+        <Button Content="Ta bort Träningspass" Width="150" Height="30" Margin="100,10,100,0" HorizontalAlignment="Center" VerticalAlignment="Top" Click="AddWorkout_Click"/>
+            <Button Content="Info" Width="150" Height="30" Margin="100,10,100,0" HorizontalAlignment="Center" VerticalAlignment="Top" Click="AddWorkout_Click"/>
+            <Button Content="User Details" Width="150" Height="30" Margin="100,10,100,0" HorizontalAlignment="Center" VerticalAlignment="Top" Click="AddWorkout_Click"/>
+            <ListBox x:Name="WorkoutListBox" Height="150" Margin="10,50,10,10" DisplayMemberPath="Name"/>
         </StackPanel>
     </Grid>
 </Window>
