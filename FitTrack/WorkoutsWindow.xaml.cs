@@ -149,6 +149,7 @@ namespace FitTrack
                 if (selectedWorkout != null)
                 {
                     WorkoutList.Remove(selectedWorkout); //ta bor det.
+
                 }
                 else
                 {
