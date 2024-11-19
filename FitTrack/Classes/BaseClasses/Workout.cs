@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Xml.Linq;
 
 namespace FitTrack.Classes.BaseClasses;
 //{
@@ -83,7 +84,12 @@ namespace FitTrack.Classes.BaseClasses;
 
 public abstract class Workout
 {
-    public int Date { get; set; }
+    public string Name
+    {
+        get { return Date.ToString() + " " + Type; }   // get method
+        set { Name = value; }  // set method
+    }
+    public DateOnly Date { get; set; }
     public string Type { get; set; }
     public int Duration { get; set; }
     public int CaloriesBurned { get; set; }

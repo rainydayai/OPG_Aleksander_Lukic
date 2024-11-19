@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace FitTrack.Classes.GUIClasses
 {
-    public class WorkoutsWindowClass
-    {
+    public class WorkoutsWindowClass { 
+    
         public User User { get; set; }
         public List<Workout> WorkoutList { get; set; }
 

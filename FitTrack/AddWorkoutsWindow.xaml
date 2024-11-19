@@ -16,8 +16,9 @@
             <TextBox x:Name="DurationTextBox" Width="200" Height="30" Margin="0,10,0,0"  HorizontalAlignment="Center" VerticalAlignment="Top" Text="Varaktighet (minuter)"/>
                 <TextBox x:Name="CaloriesBurnedTextBox" Width="200" Height="30" Margin="0,10,0,0"  HorizontalAlignment="Center" VerticalAlignment="Top" Text="Kalorier Förbrända"/>
             <TextBox x:Name="NotesTextBox" Width="200" Height="60" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Anteckningar"/>
-            <Button Content="Spara" Width="100" Height="30" Margin=",0,100,0" HorizontalAlignment="Right" VerticalAlignment="Top" Click="SaveWorkout_Click"/>
-                <Button Content="Avbryt" Width="100" Height="30" Margin="100,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click" />
+           
         </StackPanel>
+        <Button Content="Spara" Width="100" Height="30" Margin="0,300,100,0" HorizontalAlignment="Right" VerticalAlignment="Top" Click="SaveWorkout_Click"/>
+        <Button Content="Avbryt" Width="100" Height="30" Margin="100,300,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click" />
     </Grid>
 </Window>

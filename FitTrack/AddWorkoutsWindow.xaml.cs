@@ -115,8 +115,6 @@ namespace FitTrack
                   /*  Date = DateTime.Now */// Använd nuvarande datum för träningspasset
                 };
 
-                var workoutWindow = new WorkoutsWindow(manager);
-                workoutWindow.Show();
                 MessageBox.Show("En ny workout har skapats");
                 DialogResult = true; // Signalerar att träningen sparades korrekt
                 Close(); // Stänger fönstret
@@ -129,12 +127,10 @@ namespace FitTrack
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            WorkoutsWindow window = new WorkoutsWindow(manager);
-            window.Show();
+            
             this.Close();
         }
-    }
-
+    }   
 }
 
 

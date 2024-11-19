@@ -23,14 +23,15 @@ namespace FitTrack
         UserManagement manager;
         public StartWindow(UserManagement manager)
         {
+            
             InitializeComponent();
+            this.manager = manager;
         }
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             MainWindow loginWindow = new MainWindow(manager);
             loginWindow.Show();
-
             this.Close();
 
 

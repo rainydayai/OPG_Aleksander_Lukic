@@ -16,7 +16,7 @@ namespace FitTrack
 
             UserManagement manager = new UserManagement();
 
-            MainWindow window = new MainWindow(manager);
+            StartWindow window = new StartWindow(manager);
             window.Show();
         }
 

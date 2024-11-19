@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace FitTrack
 {
@@ -82,38 +84,44 @@ namespace FitTrack
     public partial class WorkoutsWindow : Window
     {
         private UserManagement manager;
-
         public User CurrentUser { get; private set; }
-        public ObservableCollection<Workout> WorkoutList { get; set; }
+        private ObservableCollection<Workout> workoutList;
 
-        public Workout workout { get; set; }
+        public ObservableCollection<Workout> WorkoutList
+        {
+            get { return workoutList; }
+            set
+            {
+                workoutList = value;
+                OnPropertyChanged(nameof(WorkoutList));
+            }
+        }
 
-        public List<Workout> workoutList { get; set; } = new List<Workout>();
-
-
-
-        //public WorkoutsWindow()
-        //{
-        //    InitializeComponent();
-        //}
-
-        public WorkoutsWindow(UserManagement manager)  // Anropar parameterlös konstruktor
+        public WorkoutsWindow(UserManagement manager)
         {
             InitializeComponent();
             this.manager = manager;
-            //CurrentUser = user; Lägg currentuser som property(egenskap) i manager klassen 
-
-
-            WorkoutList = new ObservableCollection<Workout>(); // Initierar listan av träningspass
-
-            //UpdateWorkoutList();
+            workoutList = new ObservableCollection<Workout>(); // Initialize the ObservableCollection
+            DataContext = this; // Set the DataContext for data binding
         }
 
-        // Uppdaterar visningen av träningslistan (t.ex. i en ListView eller liknande)
-        private void UpdateWorkoutList()
+        private void AddWorkout_Click(object sender, RoutedEventArgs e)
         {
-            //WorkoutsListView.ItemsSource = null;  // Rensa befintliga objekt
-            //WorkoutsListView.ItemsSource = WorkoutList;  // Sätt om datakällan
+            var addWorkoutWindow = new AddWorkoutsWindow(CurrentUser, manager);
+
+            if (addWorkoutWindow.ShowDialog() == true)
+            {
+                if (addWorkoutWindow.NewWorkout != null)
+                {
+                    WorkoutList.Add(addWorkoutWindow.NewWorkout); // Add new workout to the ObservableCollection
+                }
+                else
+                {
+                    MessageBox.Show("Inget träningspass lades till.");
+                }
+            }
+
+            this.Show(); // Show the current window again
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -121,44 +129,10 @@ namespace FitTrack
             this.Close();
         }
 
-    // Öppna fönstret för att lägga till ett nytt träningspass
-    private void AddWorkout_Click(object sender, RoutedEventArgs e)
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
         {
-            var addWorkoutWindow = new AddWorkoutsWindow(CurrentUser, manager); // Skapar nytt AddWorkoutWindow
-                                                                                //addWorkoutWindow.Owner = this;
-            this.Close();
-
-            if (addWorkoutWindow.ShowDialog() == true) // Om användaren sparar träningspasset
-            {
-               
-                if (addWorkoutWindow.NewWorkout != null) // Kontrollera om ett träningspass skapades
-                {
-                    WorkoutList.Add(addWorkoutWindow.NewWorkout);
-                    // WorkoutList.Add(addWorkoutWindow.NewWorkout); // Lägg till träningspasset i listan
-                    // UpdateWorkoutList();  // Uppdatera listan efter att träningspasset lagts till
-                }
-                else
-                {
-                    MessageBox.Show("Inget träningspass lades till.");
-                }
-            }
-        }
-
-
-
-        public void AddWorkoutToList(Workout workout)
-        {
-            workoutList.Add(workout);
-            WorkoutListBox.ItemsSource = null;  // För att uppdatera listan, rensa och sätt den igen
-            WorkoutListBox.ItemsSource = workoutList;
-        }
-
-
-
-        public static implicit operator WorkoutsWindow(WorkoutDetailsWindow v)
-        {
-            throw new NotImplementedException();
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-
 }

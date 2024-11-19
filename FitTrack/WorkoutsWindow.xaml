@@ -12,7 +12,7 @@
         <Button Content="Ta bort Träningspass" Width="150" Height="30" Margin="100,10,100,0" HorizontalAlignment="Center" VerticalAlignment="Top" Click="AddWorkout_Click"/>
             <Button Content="Info" Width="150" Height="30" Margin="100,10,100,0" HorizontalAlignment="Center" VerticalAlignment="Top" Click="AddWorkout_Click"/>
             <Button Content="User Details" Width="150" Height="30" Margin="100,10,100,0" HorizontalAlignment="Center" VerticalAlignment="Top" Click="AddWorkout_Click"/>
-            <ListBox x:Name="WorkoutListBox" Height="150" Margin="10,50,10,10" DisplayMemberPath="Name"/>
+            <ListBox Name="WorkoutListBox" Height="150" Margin="10,50,10,10" DisplayMemberPath="Name" ItemsSource="{Binding WorkoutList}"/>
         </StackPanel>
     </Grid>
 </Window>
